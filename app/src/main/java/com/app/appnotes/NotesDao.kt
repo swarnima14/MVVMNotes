@@ -1,18 +1,17 @@
 package com.app.appnotes
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
+@Dao
 interface NotesDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(note: Notes)
 
     @Delete
     suspend fun delete(note: Notes)
 
-    @Query("SELECT * FROM notes_table")
+    @Query("SELECT * FROM notes_table ORDER BY id ASC")
     fun getAll(): LiveData<List<Notes>>
 }
