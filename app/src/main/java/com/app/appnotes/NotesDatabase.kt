@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
 @Database(entities = arrayOf(Notes::class), version = 1, exportSchema = false)
 public abstract class NotesDatabase: RoomDatabase() {
 
-    abstract fun notesDao(): NotesDao
+    abstract fun getNotesDao(): NotesDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the

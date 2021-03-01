@@ -8,10 +8,10 @@ import androidx.room.Query
 interface NotesDao {
 
     @Insert
-    suspend fun insert(text: String)
+    suspend fun insert(note: Notes)
 
     @Delete
-    suspend fun delete(text: String)
+    suspend fun delete(note: Notes)
 
     @Query("SELECT * FROM notes_table")
     fun getAll(): LiveData<List<Notes>>
